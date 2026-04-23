@@ -14,7 +14,7 @@ export default function Signup({ onSwitch }) {
     setError(""); setMsg("");
     setLoading(true);
     try {
-      await axios.post("http://127.0.0.1:5000/api/signup", { name, email, password });
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/signup`, { name, email, password });
       setMsg("Account created! Please sign in.");
       setTimeout(onSwitch, 1500);
     } catch (err) {

@@ -12,7 +12,7 @@ export default function Login({ onLogin, onSwitch }) {
     setError("");
     setLoading(true);
     try {
-      const res = await axios.post("http://127.0.0.1:5000/api/login", { email, password });
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/login`, { email, password });
       onLogin(res.data.token, res.data.name);
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");

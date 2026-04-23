@@ -16,7 +16,7 @@ export default function Dashboard({ token, userName, onLogout }) {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://127.0.0.1:5000/api/file", formData, {
+      const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/file`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCols(res.data.cols);
@@ -41,8 +41,8 @@ export default function Dashboard({ token, userName, onLogout }) {
 
       {/* ── HERO ── */}
       <div className="hero">
-        <h2>Welcome {userName.split(" ")[0]}</h2>
-        <p>Upload a CSV or Excel File to Start Clean Your Data</p>
+        <h2>Welcome back, {userName.split(" ")[0]} 👋</h2>
+        <p>Upload a CSV or Excel file to start cleaning your data</p>
       </div>
 
       <UploadBox fName={fName} onUpload={uploadFile} rowCount={rowCount} />

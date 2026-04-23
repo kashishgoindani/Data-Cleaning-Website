@@ -6,7 +6,7 @@ export default function Columns({ cols, fName, token }) {
   const [url, setUrl]         = useState("");
   const [loading, setLoading] = useState(false);
 
-
+  // Each ColumnItem exposes its current value via a callback registered here
   const itemRefs = useRef({});
 
   const registerRef = (colName, getValue) => {
@@ -49,7 +49,7 @@ export default function Columns({ cols, fName, token }) {
     setUrl("");
     try {
       const res = await axios.post(
-        "http://127.0.0.1:5000/api/inputs",
+        `${process.env.REACT_APP_API_BASE_URL}/api/inputs`,
         payload,
         {
           headers: {
@@ -99,12 +99,12 @@ export default function Columns({ cols, fName, token }) {
 
       <div className="action-row">
         <button className="clean-btn" disabled={loading} onClick={handleClean}>
-          {loading ? "⏳ Cleaning..." : " Clean Data"}
+          {loading ? "⏳ Cleaning..." : "🧹 Clean Data"}
         </button>
 
         {url && (
           <a href={url} download={`cleaned_${fName}`} className="download-btn">
-            Download Cleaned File
+            ⬇ Download Cleaned File
           </a>
         )}
       </div>
