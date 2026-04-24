@@ -41,7 +41,7 @@ export default function Dashboard({ token, userName, onLogout }) {
 
       {/* ── HERO ── */}
       <div className="hero">
-        <h2>Welcome back, {userName.split(" ")[0]} 👋</h2>
+        <h2>Welcome {userName.split(" ")[0]}</h2>
         <p>Upload a CSV or Excel file to start cleaning your data</p>
       </div>
 
